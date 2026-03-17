@@ -1,15 +1,26 @@
 ---
 name: frontend-a11y
 description: Apply accessibility patterns aligned with WCAG 2.2 AA and EN 301 549 (EU accessibility standard) to every frontend page or flow. Use when adding or editing pages, forms, async actions, or interactive components.
+tags: [frontend, a11y, web]
+scope: agent-guidance
+version: 0.1.0
+status: stable
 ---
 
-## Frontend accessibility (a11y) – every page
+## Goal
 
-Goal: meet **WCAG 2.2 AA** and **EN 301 549** requirements wherever reasonably possible in this app. Every new or updated page should follow the rules below.
+Meet **WCAG 2.2 AA** and **EN 301 549** requirements wherever reasonably possible in this app. Every new or updated frontend page or flow should follow the rules below.
 
----
+## When to use
 
-## 1. Skip link and main content
+- When adding or editing any **frontend page**, **view**, or **layout**.
+- When implementing or refactoring **forms**, **inputs**, or **validation flows**.
+- When adding or updating **async actions** and **status messages** (loading, success, error).
+- When introducing or changing **icons**, **images**, or other decorative UI elements.
+
+## Rules / guidelines
+
+### 1. Skip link and main content
 
 - First focusable element on the page: a skip link with text.
 - `href="#main-content"`; `<main id="main-content" tabIndex={-1}>`.
@@ -23,7 +34,7 @@ This pattern helps keyboard and screen reader users quickly jump to main content
 
 ---
 
-## 2. Landmarks
+### 2. Landmarks
 
 - Use semantic landmarks: `<header>`, `<main id="main-content">`, `<footer role="contentinfo">` according to the layout of the page.
 - For sections, provide a heading with a unique `id`, and set `aria-labelledby="that-heading-id"` on the section container.
@@ -32,7 +43,7 @@ This gives assistive technologies a clear, structured outline of the page, which
 
 ---
 
-## 3. Forms and inputs
+### 3. Forms and inputs
 
 - The `<form>` element should have an accessible name:
   - Prefer a visible heading near the form, or
@@ -47,7 +58,7 @@ These rules address multiple WCAG and EN 301 549 success criteria around form la
 
 ---
 
-## 4. Live regions (changing status)
+### 4. Live regions (changing status)
 
 - The container where async status messages appear (success, loading, error) should have:
   - `role="status"`,
@@ -59,7 +70,7 @@ This ensures that screen readers announce loading states and results without bei
 
 ---
 
-## 5. Decorative elements
+### 5. Decorative elements
 
 - Icons and images that are purely decorative (do not convey information not already in text) must have `aria-hidden="true"`.
 - If an icon or image is meaningful, provide an accessible name via:
@@ -69,7 +80,7 @@ This ensures that screen readers announce loading states and results without bei
 
 ---
 
-## 6. Lists
+### 6. Lists
 
 - Where a group of items is logically a list, use semantic lists:
   - Prefer `<ul>` / `<ol>` with `<li>` items.
@@ -81,7 +92,7 @@ This helps assistive technologies announce item counts and relationships.
 
 ---
 
-## 7. Headings
+### 7. Headings
 
 - Maintain a proper heading hierarchy: `h1` → `h2` → `h3` → `h4` without skipping levels.
 - Each major section should have a clear heading; avoid styling generic elements to “look like” headings without using actual `h*` tags.
@@ -90,13 +101,11 @@ Correct heading structure is an explicit requirement for perceivable and navigab
 
 ---
 
-## 8. Project formatting convention
+### 8. Project formatting convention
 
 - For JSX/TSX elements with multiple props, put **each prop on its own line**. This is enforced by ESLint and also keeps accessibility-related attributes (like `aria-*`) easy to spot and review.
 
----
-
-## Checklist for any page / flow (a11y)
+## Checklist
 
 - [ ] Page has a working skip link that jumps to `<main id="main-content">`.
 - [ ] Landmarks use semantic elements (`header`, `main`, `footer`) and sections use `aria-labelledby` where appropriate.
