@@ -7,6 +7,8 @@ version: 1.0.0
 status: stable
 ---
 
+> This skill is heavily inspired by the open-source SEO skill from the `esc-skills` repository: `https://github.com/guilhermemarketing/esc-skills/blob/main/skills/seo/SKILL.md`.
+
 ## Goal
 
 Help the agent implement **technical SEO** and **on-page SEO** that aligns with Lighthouse SEO audits and Google Search guidelines, with a strong focus on crawlability, indexability, structured data, and on-page signals.
